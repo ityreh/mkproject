@@ -5,6 +5,8 @@
 # and
 .project
 .settings
+src/static
+src/templates
 
 ### VisualStudioCode ###
 
