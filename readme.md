@@ -4,6 +4,7 @@ mkreadme is a CLI that asks you some questions about your project and creates a 
 
 ![GitHub Workflow Status](https://img.shields.io/github/workflow/status/ityreh/mkreadme/workflow-placeholder)
 ![GitHub package.json version](https://img.shields.io/github/package-json/v/ityreh/mkreadme)
+![npm](https://img.shields.io/npm/v/mkreadme-cli)
 
 TODO: demo with asciinema
 
