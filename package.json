@@ -2,7 +2,10 @@
   "name": "mkreadme-cli",
   "version": "0.0.1",
   "description": "A CLI for creating beautiful and useful readme files.",
-  "main": "index.js",
+  "main": "bin/index.js",
+  "bin": {
+    "mkreadme": "./bin/index.js"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },

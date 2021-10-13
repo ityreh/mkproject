@@ -10,11 +10,15 @@ TODO: demo with asciinema
 
 ## Installation
 
-TODO: installation instructions
+You can install the CLI globally with [npm](https://www.npmjs.com/) as a node package:
+
+    npm install mkreadme-cli -g
 
 ## Usage
 
-TODO: usage guide
+If you installed the CLI with the global flag, you can use it from anywhere on your system:
+
+    mkreadme
 
 ## Support
 
