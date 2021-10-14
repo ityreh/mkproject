@@ -2,7 +2,7 @@ class Markup {
     constructor(markupLanguage) {
         //TODO: this is not used yet, but is a preparation for the support of multiple markup languages
         this.markupLanguage = markupLanguage;
-        this.suffix = '\n\n';
+        this.suffix = '\n';
     }
 
     title(title, depth) {
@@ -12,6 +12,10 @@ class Markup {
 
     text(text) {
         return text.concat(this.suffix);
+    }
+
+    markupLanguage() {
+        return this.markupLanguage;
     }
 }
 
