@@ -1,10 +1,10 @@
 #! /usr/bin/env node
 const cli = require('./cli');
-
-cli.start(' mkreadme ');
+const readme = require('./readme');
 
 // main function
 const run = async () => {
-    //...
+    cli.start(' mkreadme ');
+    readme.generate('md');
 }
-run()
+run();

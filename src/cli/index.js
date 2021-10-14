@@ -1,5 +1,5 @@
-const Title = require('./Title');
 const ArgumentParser = require('./ArgumentParser');
+const Title = require('./Title');
 
 function start(title) {
     this.title = new Title(title);

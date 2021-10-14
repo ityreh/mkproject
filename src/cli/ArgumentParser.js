@@ -1,4 +1,4 @@
-const yargs = require("yargs");
+const yargs = require('yargs');
 
 class ArgumentParser {
     constructor() {
@@ -11,11 +11,7 @@ class ArgumentParser {
             .help(true)
             .argv;
 
-        // print usage if no arguments are given
-        if (yargs.argv._[0] == null) {
-            yargs.showHelp();
-            return;
-        }
+        yargs.showHelp();
     }
 }
 
