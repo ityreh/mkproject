@@ -1,6 +1,6 @@
 class Visual {
-    constructor() {
-        this.visual = 'TODO: add visuals here';
+    constructor(markup) {
+        this.visual = markup.text('TODO: add visuals here');
     }
 
     get() {

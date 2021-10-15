@@ -8,6 +8,7 @@ class ArgumentParser {
             .option("d", { alias: "description", description: "Description of your project.", type: "string" })
             .option("b", { alias: "badge", description: "Badge you want to have in your readme.", type: "string" })
             .option("v", { alias: "visual", description: "Visual that visualizes your project.", type: "string" })
+            .option("i", { alias: "installation", description: "Installation instructions to be able to use your software.", type: "string" })
             .help(true)
             .argv;
 

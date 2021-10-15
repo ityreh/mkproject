@@ -1,6 +1,6 @@
 class Badge {
-    constructor() {
-        this.badge = 'TODO: add badges here';
+    constructor(markup) {
+        this.badge = markup.text('TODO: add badges here');
     }
 
     get() {
