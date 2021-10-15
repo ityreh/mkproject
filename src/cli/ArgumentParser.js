@@ -3,11 +3,9 @@ const yargs = require('yargs');
 class ArgumentParser {
     constructor() {
         const options = yargs
-            .usage("\nUsage: mkreadme")
-            .option("i", {
-                alias: "info", describe: "Gives you an overview about the information that will be included in the readme.", type: "boolean", demandOption
-                    : false
-            })
+            .usage("Usage:\n\t$0\n\t$0 -t <title> -d <description>")
+            .option("t", { alias: "title", describe: "Title of your project.", type: "string" })
+            .option("d", { alias: "description", description: "Description of your project.", type: "string" })
             .help(true)
             .argv;
 
