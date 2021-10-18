@@ -7,6 +7,7 @@ const Badge = require('./Badge');
 const Visual = require('./Visual');
 const Installation = require('./Installation');
 const Usage = require('./Usage');
+const Support = require('./Support');
 
 function generate(markupLanguage) {
     this.markup = new Markup(markupLanguage);
@@ -16,7 +17,8 @@ function generate(markupLanguage) {
     let visual = new Visual(this.markup);
     let installation = new Installation('You can install this software with npm:\n\n    npm i', this.markup);
     let usage = new Usage('Use the CLI with or without arguments:\n\n    mkreadme', this.markup);
-    write(aggregate(title, description, badge, visual, installation, usage));
+    let support = new Support('If you have any problems using this tool or feature reqeusts, please feel free to [open an issue]().', this.markup);
+    write(aggregate(title, description, badge, visual, installation, usage, support));
 }
 
 function write(document) {
@@ -25,14 +27,15 @@ function write(document) {
     fileWriter.append(document.get());
 }
 
-function aggregate(title, description, badge, visual, installation, usage) {
+function aggregate(title, description, badge, visual, installation, usage, support) {
     let aggregatedDocument = new AggregatedDocument();
     aggregatedDocument.appendSection(title.get(), true);
     aggregatedDocument.appendSection(description.get(), true);
     aggregatedDocument.appendSection(badge.get(), true);
     aggregatedDocument.appendSection(visual.get(), true);
     aggregatedDocument.appendSection(installation.get(), true);
-    aggregatedDocument.appendSection(usage.get(), false);
+    aggregatedDocument.appendSection(usage.get(), true);
+    aggregatedDocument.appendSection(support.get(), false);
     return aggregatedDocument;
 }
 
