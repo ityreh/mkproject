@@ -6,6 +6,7 @@ const AggregatedDocument = require('./AggregatedDocument');
 const Badge = require('./Badge');
 const Visual = require('./Visual');
 const Installation = require('./Installation');
+const Usage = require('./Usage');
 
 function generate(markupLanguage) {
     this.markup = new Markup(markupLanguage);
@@ -14,7 +15,8 @@ function generate(markupLanguage) {
     let badge = new Badge(this.markup);
     let visual = new Visual(this.markup);
     let installation = new Installation('You can install this software with npm:\n\n    npm i', this.markup);
-    write(aggregate(title, description, badge, visual, installation));
+    let usage = new Usage('Use the CLI with or without arguments:\n\n    mkreadme', this.markup);
+    write(aggregate(title, description, badge, visual, installation, usage));
 }
 
 function write(document) {
@@ -23,13 +25,14 @@ function write(document) {
     fileWriter.append(document.get());
 }
 
-function aggregate(title, description, badge, visual, installation) {
+function aggregate(title, description, badge, visual, installation, usage) {
     let aggregatedDocument = new AggregatedDocument();
     aggregatedDocument.appendSection(title.get(), true);
     aggregatedDocument.appendSection(description.get(), true);
     aggregatedDocument.appendSection(badge.get(), true);
     aggregatedDocument.appendSection(visual.get(), true);
-    aggregatedDocument.appendSection(installation.get(), false);
+    aggregatedDocument.appendSection(installation.get(), true);
+    aggregatedDocument.appendSection(usage.get(), false);
     return aggregatedDocument;
 }
 
