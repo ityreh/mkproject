@@ -10,6 +10,7 @@ const Usage = require('./Usage');
 const Support = require('./Support');
 const Roadmap = require('./Roadmap');
 const Contributing = require('./Contributing');
+const Acknowledgement = require('./Acknowledgement');
 
 function generate(markupLanguage) {
     this.markup = new Markup(markupLanguage);
@@ -22,7 +23,8 @@ function generate(markupLanguage) {
     let support = new Support('If you have any problems using this tool or feature reqeusts, please feel free to [open an issue](https://www.google.de).', this.markup);
     let roadmap = new Roadmap('TODO: roadmap', this.markup);
     let contributing = new Contributing('You are welcome to contribute and make pull requests. If you want to introduce a new bigger feature you can [open an issue](https://www.google.com) to discuss it.', this.markup);
-    write(aggregate(title, description, badge, visual, installation, usage, support, roadmap, contributing));
+    let acknowledgement = new Acknowledgement('- [Ityreh](https://github.com/ityreh)', this.markup);
+    write(aggregate(title, description, badge, visual, installation, usage, support, roadmap, contributing, acknowledgement));
 }
 
 function write(document) {
@@ -31,7 +33,7 @@ function write(document) {
     fileWriter.append(document.get());
 }
 
-function aggregate(title, description, badge, visual, installation, usage, support, roadmap, contributing) {
+function aggregate(title, description, badge, visual, installation, usage, support, roadmap, contributing, acknowledgement) {
     let aggregatedDocument = new AggregatedDocument();
     aggregatedDocument.appendSection(title.get(), true);
     aggregatedDocument.appendSection(description.get(), true);
@@ -41,7 +43,8 @@ function aggregate(title, description, badge, visual, installation, usage, suppo
     aggregatedDocument.appendSection(usage.get(), true);
     aggregatedDocument.appendSection(support.get(), true);
     aggregatedDocument.appendSection(roadmap.get(), true);
-    aggregatedDocument.appendSection(contributing.get(), false);
+    aggregatedDocument.appendSection(contributing.get(), true);
+    aggregatedDocument.appendSection(acknowledgement.get(), false);
     return aggregatedDocument;
 }
 

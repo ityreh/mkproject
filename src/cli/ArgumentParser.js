@@ -13,6 +13,7 @@ class ArgumentParser {
             .option("s", { alias: "support", description: "Describe how your users can get support for the software.", type: "string" })
             .option("r", { alias: "roadmap", description: "Add information about the roadmap of your project.", type: "string" })
             .option("c", { alias: "contributing", description: "Explain how others can contribute to your project.", type: "string" })
+            .option("a", { alias: "acknowledgment", description: "Add acknowledgments and information about the contributors.", type: "string" })
             .help(true)
             .argv;
 
