@@ -15,6 +15,7 @@ class ArgumentParser {
             .option("c", { alias: "contributing", description: "Explain how others can contribute to your project.", type: "string" })
             .option("a", { alias: "acknowledgment", description: "Add acknowledgments and information about the contributors.", type: "string" })
             .option("l", { alias: "license", description: "Add license information to your project.", type: "string" })
+            .option("p", { alias: "project", description: "Give some information about the current project status.", type: "string" })
             .help(true)
             .argv;
 

@@ -12,6 +12,7 @@ const Roadmap = require('./Roadmap');
 const Contributing = require('./Contributing');
 const Acknowledgement = require('./Acknowledgement');
 const License = require('./License');
+const Project = require('./Project');
 
 function generate(markupLanguage) {
     this.markup = new Markup(markupLanguage);
@@ -25,8 +26,9 @@ function generate(markupLanguage) {
     let roadmap = new Roadmap('TODO: roadmap', this.markup);
     let contributing = new Contributing('You are welcome to contribute and make pull requests. If you want to introduce a new bigger feature you can [open an issue](https://www.google.com) to discuss it.', this.markup);
     let acknowledgement = new Acknowledgement('- [Ityreh](https://github.com/ityreh)', this.markup);
-    let license = new License('', this.markup);
-    write(aggregate(title, description, badge, visual, installation, usage, support, roadmap, contributing, acknowledgement, license));
+    let license = new License('[GNU GPLv3](./LICENSE)', this.markup);
+    let project = new Project('Working on version 1.0', this.markup);
+    write(aggregate(title, description, badge, visual, installation, usage, support, roadmap, contributing, acknowledgement, license, project));
 }
 
 function write(document) {
@@ -35,7 +37,7 @@ function write(document) {
     fileWriter.append(document.get());
 }
 
-function aggregate(title, description, badge, visual, installation, usage, support, roadmap, contributing, acknowledgement, license) {
+function aggregate(title, description, badge, visual, installation, usage, support, roadmap, contributing, acknowledgement, license, project) {
     let aggregatedDocument = new AggregatedDocument();
     aggregatedDocument.appendSection(title.get(), true);
     aggregatedDocument.appendSection(description.get(), true);
@@ -47,7 +49,8 @@ function aggregate(title, description, badge, visual, installation, usage, suppo
     aggregatedDocument.appendSection(roadmap.get(), true);
     aggregatedDocument.appendSection(contributing.get(), true);
     aggregatedDocument.appendSection(acknowledgement.get(), true);
-    aggregatedDocument.appendSection(license.get(), false);
+    aggregatedDocument.appendSection(license.get(), true);
+    aggregatedDocument.appendSection(project.get(), false);
     return aggregatedDocument;
 }
 
