@@ -1,5 +1,5 @@
 {
-  "name": "mkreadme-cli",
+  "name": "mkreadme",
   "version": "0.0.1",
   "description": "A CLI for creating beautiful and useful readme files.",
   "main": "src/index.js",

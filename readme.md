@@ -12,7 +12,7 @@ TODO: demo with asciinema
 
 You can install the CLI globally with [npm](https://www.npmjs.com/) as a node package:
 
-    npm install mkreadme-cli -g
+    npm install mkreadme -g
 
 ## Usage
 
