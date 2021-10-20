@@ -24,8 +24,8 @@ jobs:
         run: npm run lint-fix
       - name: Test
         run: npm run test:unit --if-present
-      - name: Build
-        run: npm run build
+      #- name: Build
+      #  run: npm run build
       - name: Release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
