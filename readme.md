@@ -34,6 +34,7 @@ If you have any problems using this tool or feature reqeusts, please feel free t
 ### 1.0.0
 
 - Demo with asciinema :white_check_mark:
+- Important badges
 
 ## Contributing
 
