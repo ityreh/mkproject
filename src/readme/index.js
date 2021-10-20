@@ -1,18 +1,19 @@
 const Markup = require('./Markup');
 const FileWriter = require('./FileWriter');
-const Title = require('./Title');
-const Description = require('./Description');
 const AggregatedDocument = require('./AggregatedDocument');
-const Badge = require('./Badge');
-const Visual = require('./Visual');
-const Installation = require('./Installation');
-const Usage = require('./Usage');
-const Support = require('./Support');
-const Roadmap = require('./Roadmap');
-const Contributing = require('./Contributing');
-const Acknowledgement = require('./Acknowledgement');
-const License = require('./License');
-const Project = require('./Project');
+
+const Title = require('./sections/Title');
+const Description = require('./sections/Description');
+const Badge = require('./sections/Badge');
+const Visual = require('./sections/Visual');
+const Installation = require('./sections/Installation');
+const Usage = require('./sections/Usage');
+const Support = require('./sections/Support');
+const Roadmap = require('./sections/Roadmap');
+const Contributing = require('./sections/Contributing');
+const Acknowledgement = require('./sections/Acknowledgement');
+const License = require('./sections/License');
+const Project = require('./sections/Project');
 
 function generate(markupLanguage) {
     this.markup = new Markup(markupLanguage);
