@@ -2,9 +2,8 @@
 
 mkreadme is a CLI that asks you some questions about your project and creates a beautiful reamde with this information. The basic structure of a beautiful readme is taken from [Make a Readme](https://www.makeareadme.com/) by [Danny Guo](https://www.dannyguo.com/).
 
-![GitHub Workflow Status](https://img.shields.io/github/workflow/status/ityreh/mkreadme/workflow-placeholder)
-![GitHub package.json version](https://img.shields.io/github/package-json/v/ityreh/mkreadme)
-![npm](https://img.shields.io/npm/v/mkreadme-cli)
+![GitHub Workflow Status](https://img.shields.io/github/workflow/status/ityreh/mkreadme/release)
+![npm](https://img.shields.io/npm/v/mkreadme)
 
 TODO: demo with asciinema
 
@@ -28,13 +27,13 @@ If you have any problems using this tool or feature reqeusts, please feel free t
 
 ### MVP
 
-- one
-- two
+- [ ] CLI with help page
+- [ ] Simple Dialog
 
 ### 1.0.0
 
-- Demo with asciinema :white_check_mark:
-- Important badges
+- [ ] Demo with asciinema for own readme visual
+- [ ] Generate some easy badges
 
 ## Contributing
 
