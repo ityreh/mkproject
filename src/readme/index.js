@@ -1,57 +1,50 @@
 const Markup = require('./Markup');
 const FileWriter = require('./FileWriter');
-const Title = require('./Title');
-const Description = require('./Description');
-const AggregatedDocument = require('./AggregatedDocument');
-const Badge = require('./Badge');
-const Visual = require('./Visual');
-const Installation = require('./Installation');
-const Usage = require('./Usage');
-const Support = require('./Support');
-const Roadmap = require('./Roadmap');
-const Contributing = require('./Contributing');
-const Acknowledgement = require('./Acknowledgement');
-const License = require('./License');
-const Project = require('./Project');
+const SectionBuilder = require('./sections/SectionBuilder');
+const DocumentBuilder = require('./DocumentBuilder');
 
 function generate(markupLanguage) {
-    this.markup = new Markup(markupLanguage);
-    let title = new Title('mkreadme', this.markup);
-    let description = new Description('This is the description of my program and it will be written to the reamde file.', this.markup);
-    let badge = new Badge(this.markup);
-    let visual = new Visual(this.markup);
-    let installation = new Installation('You can install this software with npm:\n\n    npm i', this.markup);
-    let usage = new Usage('Use the CLI with or without arguments:\n\n    mkreadme', this.markup);
-    let support = new Support('If you have any problems using this tool or feature reqeusts, please feel free to [open an issue](https://www.google.de).', this.markup);
-    let roadmap = new Roadmap('TODO: roadmap', this.markup);
-    let contributing = new Contributing('You are welcome to contribute and make pull requests. If you want to introduce a new bigger feature you can [open an issue](https://www.google.com) to discuss it.', this.markup);
-    let acknowledgement = new Acknowledgement('- [Ityreh](https://github.com/ityreh)', this.markup);
-    let license = new License('[GNU GPLv3](./LICENSE)', this.markup);
-    let project = new Project('Working on version 1.0', this.markup);
-    write(aggregate(title, description, badge, visual, installation, usage, support, roadmap, contributing, acknowledgement, license, project));
+    let markup = new Markup(markupLanguage);
+
+    let readme = aggregate(
+        new SectionBuilder(markup).title('mkreadme').build(),
+        new SectionBuilder(markup).description('This is the description of my program and it will be written to the reamde file.').build(),
+        new SectionBuilder(markup).badge().build(),
+        new SectionBuilder(markup).visual().build(),
+        new SectionBuilder(markup).installation('You can install this software with npm:\n\n    npm i').build(),
+        new SectionBuilder(markup).usage('Use the CLI with or without arguments:\n\n    mkreadme').build(),
+        new SectionBuilder(markup).support('If you have any problems using this tool or feature reqeusts, please feel free to [open an issue](https://www.google.de).').build(),
+        new SectionBuilder(markup).roadmap('TODO: roadmap').build(),
+        new SectionBuilder(markup).contributing('You are welcome to contribute and make pull requests. If you want to introduce a new bigger feature you can [open an issue](https://www.google.com) to discuss it.').build(),
+        new SectionBuilder(markup).acknowledgement('- [Ityreh](https://github.com/ityreh)').build(),
+        new SectionBuilder(markup).license('[GNU GPLv3](./LICENSE)').build(),
+        new SectionBuilder(markup).project('Working on version 1.0').build()
+    );
+
+    write(readme);
 }
 
 function write(document) {
     let fileWriter = new FileWriter('md');
     fileWriter.open();
-    fileWriter.append(document.get());
+    fileWriter.append(document);
 }
 
 function aggregate(title, description, badge, visual, installation, usage, support, roadmap, contributing, acknowledgement, license, project) {
-    let aggregatedDocument = new AggregatedDocument();
-    aggregatedDocument.appendSection(title.get(), true);
-    aggregatedDocument.appendSection(description.get(), true);
-    aggregatedDocument.appendSection(badge.get(), true);
-    aggregatedDocument.appendSection(visual.get(), true);
-    aggregatedDocument.appendSection(installation.get(), true);
-    aggregatedDocument.appendSection(usage.get(), true);
-    aggregatedDocument.appendSection(support.get(), true);
-    aggregatedDocument.appendSection(roadmap.get(), true);
-    aggregatedDocument.appendSection(contributing.get(), true);
-    aggregatedDocument.appendSection(acknowledgement.get(), true);
-    aggregatedDocument.appendSection(license.get(), true);
-    aggregatedDocument.appendSection(project.get(), false);
-    return aggregatedDocument;
+    return new DocumentBuilder()
+        .append(title)
+        .append(description)
+        .append(badge)
+        .append(visual)
+        .append(installation)
+        .append(usage)
+        .append(support)
+        .append(roadmap)
+        .append(contributing)
+        .append(acknowledgement)
+        .append(license)
+        .append(project)
+        .build();
 }
 
 module.exports = {
