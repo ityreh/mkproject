@@ -25,6 +25,7 @@
   "dependencies": {
     "chalk": "^4.1.2",
     "figlet": "^1.5.2",
+    "inquire": "^0.4.8",
     "yargs": "^17.2.1"
   },
   "devDependencies": {
